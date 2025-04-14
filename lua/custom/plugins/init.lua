@@ -206,4 +206,28 @@ return {
     'OXY2DEV/markview.nvim',
     lazy = false,
   },
+  {
+    'nomnivore/ollama.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+
+    -- All the user commands added by the plugin
+    cmd = { 'Ollama', 'OllamaModel', 'OllamaServe', 'OllamaServeStop' },
+
+    keys = {
+      -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
+      {
+        '<leader>o',
+        ":<c-u>lua require('ollama').prompt()<cr>",
+        desc = '[O]llama prompt',
+        mode = { 'n', 'v' },
+      },
+    },
+
+    ---@type Ollama.Config
+    opts = {
+      model = 'deepseek-coder-v2',
+    },
+  },
 }
