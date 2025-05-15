@@ -207,6 +207,10 @@ return {
     lazy = false,
   },
   {
+    'sindrets/diffview.nvim',
+    lazy = false,
+  },
+  {
     'nomnivore/ollama.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
