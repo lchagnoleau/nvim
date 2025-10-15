@@ -4,20 +4,11 @@
 -- See the kickstart.nvim README for more information
 return {
   {
-    'maxmx03/solarized.nvim',
-    lazy = false,
-    priority = 1000,
-    ---@type solarized.config
+    'stevearc/dressing.nvim',
     opts = {},
-    config = function(_, opts)
-      vim.o.termguicolors = true
-      vim.o.background = 'dark'
-      require('solarized').setup(opts)
-      -- vim.cmd.colorscheme 'solarized'
-    end,
   },
   {
-    'stevearc/dressing.nvim',
+    'richardbizik/nvim-toc',
     opts = {},
   },
   {
@@ -46,23 +37,6 @@ return {
     'sindrets/diffview.nvim',
   },
   {
-    'akinsho/git-conflict.nvim',
-    config = true,
-  },
-  {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
-      'ibhagwan/fzf-lua',
-      'rbong/vim-flog',
-      'echasnovski/mini.pick',
-    },
-    config = true,
-    opts = { graph_style = 'unicode' },
-  },
-  {
     'mbbill/undotree',
 
     config = function()
@@ -79,38 +53,19 @@ return {
         options = {
           theme = 'auto',
         },
+        sections = {
+          lualine_c = {
+            {
+              'filename',
+              path = 1, -- 0: Just the filename
+              -- 1: Relative path
+              -- 2: Absolute path
+              -- 3: Absolute path, with tilde as the home directory
+              -- 4: Filename and parent dir, with tilde as the home directory
+            },
+          },
+        },
       }
-    end,
-  },
-  {
-    'goolord/alpha-nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-
-    config = function()
-      local alpha = require 'alpha'
-      local dashboard = require 'alpha.themes.dashboard'
-
-      dashboard.section.header.val = {
-        [[                                                                       ]],
-        [[                                                                       ]],
-        [[                                                                       ]],
-        [[                                                                       ]],
-        [[                                                                     ]],
-        [[       ████ ██████           █████      ██                     ]],
-        [[      ███████████             █████                             ]],
-        [[      █████████ ███████████████████ ███   ███████████   ]],
-        [[     █████████  ███    █████████████ █████ ██████████████   ]],
-        [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
-        [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-        [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-        [[                                                                       ]],
-        [[                                                                       ]],
-        [[                                                                       ]],
-      }
-
-      alpha.setup(dashboard.opts)
     end,
   },
   {
@@ -203,40 +158,20 @@ return {
     end,
   },
   {
-    'OXY2DEV/markview.nvim',
-    lazy = false,
-  },
-  {
     'sindrets/diffview.nvim',
     lazy = false,
   },
   {
-    'nomnivore/ollama.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-
-    -- All the user commands added by the plugin
-    cmd = { 'Ollama', 'OllamaModel', 'OllamaServe', 'OllamaServeStop' },
-
-    keys = {
-      -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
-      {
-        '<leader>o',
-        ":<c-u>lua require('ollama').prompt()<cr>",
-        desc = '[O]llama prompt',
-        mode = { 'n', 'v' },
-      },
-    },
-
-    ---@type Ollama.Config
-    opts = {
-      model = 'deepseek-coder-v2',
-    },
-    {
-      'mrcjkb/rustaceanvim',
-      version = '^6', -- Recommended
-      lazy = false, -- This plugin is already lazy
-    },
+    'julienvincent/hunk.nvim',
+    cmd = { 'DiffEditor' },
+    config = function()
+      require('hunk').setup {
+        keys = {
+          global = {
+            accept = { '<leader>Ja' },
+          },
+        },
+      }
+    end,
   },
 }
