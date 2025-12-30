@@ -436,6 +436,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Search even ignore files
+      vim.keymap.set('n', '<leader>sif', function()
+        builtin.find_files { hidden = true, no_ignore = true }
+      end, { desc = '[S]earch even in [I]gnored [F]iles' })
     end,
   },
   -- LSP Plugins
