@@ -8,4 +8,4 @@ vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], 
 
 vim.keymap.set("n", "<leader>ho", ":%!xxd<CR>:set ft=xxd<CR>", { desc = "[H]ex mode [O]pen" })
 vim.keymap.set("n", "<leader>hc", ":%!xxd -r<CR>", { desc = "[H]ex mode [C]lose" })
-vim.keymap.set("n", "<leader>hc", ":%!xxd -r<CR>", { desc = "[H]ex mode [C]lose" })
+-- vim.keymap.set("n", "<leader>st", builtin.treesitter, { desc = "Treesitter" })
