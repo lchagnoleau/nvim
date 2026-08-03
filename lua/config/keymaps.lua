@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move bloc to the up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move bloc to the down" })
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "[R]eplace current [W]ord" })
